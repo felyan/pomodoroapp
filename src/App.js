@@ -4,7 +4,7 @@ import Preferences from './preferences/Preferences';
 import Costumize from './costumize/Costumize';
 import { useState } from 'react';
 import PreferencesContext from "./preferences/PreferencesContext.jsx";
-import CostumizeContext from "./costumize/CostumizeContext";
+
 
 function App() {
 
@@ -13,24 +13,35 @@ function App() {
   const [workMinutes, setWorkMinutes] = useState(45);
   const [breakMinutes, setBreakMinutes] = useState(15);
 
+  const [bgColor, setBgColor] = useState("#30384b");
+  const [fontFamily, setFontFamily]=useState("Roboto")
+  const [color, setColor] = useState("#eeeeee");
+  const [fontSize, setFontSize] = useState("24");
+
   return (
-    <main>
+    <main style={{
+      backgroundColor: bgColor,
+      color: color,
+      fontFamily: fontFamily,
+      dontSize: fontSize
+            
+    }}>
       <PreferencesContext.Provider value={{
         showPreferences,
         setShowPreferences,
         workMinutes,
         breakMinutes,
         setWorkMinutes,
-        setBreakMinutes
-      }}>
-        {showPreferences ? <Preferences /> : <Welcome />} 
-      </PreferencesContext.Provider>
-      <CostumizeContext.Provider value={{
+        setBreakMinutes,
         showCostumize,
-        setShowCostumize
+        setShowCostumize,
+        setColor,
+        setBgColor,
+        setFontFamily,
+        setFontSize
       }}>
-        {showCostumize ? <Costumize /> : <Welcome />} 
-      </CostumizeContext.Provider> 
+      {showPreferences ? <Preferences/> : showCostumize ? <Costumize/> : <Welcome/>}
+      </PreferencesContext.Provider> 
     </main>
   );
 }

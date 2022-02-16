@@ -90,3 +90,17 @@ input[type="text"i] {
 .slider.green .thumb {
   background-color: var(--green);
 }
+
+.costumizeForm {
+  text-align: left;
+}
+
+.costumizeForm input, select {
+  background-color: rgba(255, 255, 255, .1);
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 1.4rem;
+  line-height: 36px;
+  display: block;
+  margin-top: 10px;
+}
