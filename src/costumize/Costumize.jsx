@@ -1,59 +1,52 @@
-import React from 'react';
-import PreferencesContext from "../preferences/PreferencesContext";
-import { useContext, useState } from 'react';
+import React, {useContext, useState} from 'react';
 import BackButton from "../BackButton";
+import PreferencesContext from "../preferences/PreferencesContext";
 
 const Costumize = () => {
 
-  const costumizeInfo = useContext(PreferencesContext);
-
-  const [bgColor, setBgColor] = useState("#30384b");
-  const [fontFamily, setFontFamily]=useState("Roboto")
-  const [color, setColor] = useState("#eeeeee");
-  const [fontSize, setFontSize] = useState("24");
-
-const handleSubmit = (event) => {
-  event.preventDefault();
-  costumizeInfo.setBgColor(bgColor);
-  costumizeInfo.setColor(color);
-  }
+    const costumizeInfo = useContext(PreferencesContext);
+    const [bgColor, setBgColor] = useState("#30384b");
+    const [color, setColor] = useState("#eeeeee");
+    const [fSize, setFSize] = useState("16");
 
 
-  return (
-    <>
-      <div className="costumizeForm">
-        <form onSubmit={handleSubmit}>
-          <label>Background-color: {costumizeInfo.bgColor}
-            <input type="color" value={bgColor} onChange={(e)=> setBgColor(e.target.value)}
-            />
-          </label>          
-          <label value={fontFamily} onChange={(e) => setFontFamily(e.target.value)}>
-            Font Family: {costumizeInfo.fontFamily}
-            <select name="fontFamily" id="fontFamily">
-              <option value="poppins">Poppins</option>
-              <option value="roboto">Roboto</option>
-              <option value="openSans">Open Sans</option>
-            </select>
-          </label>
-          <label>Color: {costumizeInfo.color}
-            <input type="color" value={color} onChange={(e)=> setColor(e.target.value)}
-            />
-          </label>
-          <label>Font Size: {costumizeInfo.fontSize}
-            <input type="number"  min="24" max="50" value={fontSize} onChange={(e)=> setFontSize(e.target.value)} />
-          </label>
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        costumizeInfo.setBgColor(bgColor)
+        costumizeInfo.setColor(color)
+        costumizeInfo.setFSize(fSize)
+    }
 
-          <input type="submit" />
-        </form>
-        <div style={{marginTop:'20px'}}>
-          <BackButton onClick={()=> costumizeInfo.setShowCostumize(false)} />
-        </div>
-      </div>
-      
-    </>
-    
-  )
+
+    return (
+        <>
+            
+            <form onSubmit={handleSubmit}>
+                <div className="costumizeForm">
+                    <div className="container">
+                       <input type="color" id="bgColor" value={bgColor} onChange={(e) => { setBgColor(e.target.value) }} />
+                        <label>Background-color {costumizeInfo.bgColor}</label> 
+                    </div>                    
+                    <div className="container">
+                        <input type="color" id="color" value={color} onChange={(e) => setColor(e.target.value)} />
+                        <label>Text Color {costumizeInfo.color}</label>
+                    </div>
+                    <div className="container">
+                        <input type="number" id="fSize" value={fSize} onChange={(e) => setFSize(e.target.value)} />
+                        <label>Font Size {costumizeInfo.fSize}</label>
+                    </div>
+                </div>
+                <input type="submit" value="Set" />
+            </form>
+            <div style={{marginTop: '20px'}}>
+                <BackButton onClick={() => costumizeInfo.setShowCostumize(false)}/>
+            </div>
+        </>
+
+    )
 }
+
+
 
 export default Costumize
 

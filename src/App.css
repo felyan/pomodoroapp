@@ -6,13 +6,17 @@
 body {
   background-color: #30384b;
   color: #eee;
+  font-size: 24px;
 }
 
 main {
-  padding-top: 50px;
-  margin: 0 auto;
+padding: 50px;
+height: 100%;
+}
+
+.timer {
   text-align: center;
-  height: 100%;
+  margin: 0 auto;
   max-width: 340px;
 }
 
@@ -21,6 +25,39 @@ main {
   justify-content: space-around;
   margin-bottom: 50px;
 }
+
+
+/* MODAL */
+
+.modal {
+  background-color: #30384b;
+}
+
+.modalContent {
+  color: #30384b;
+}
+
+.settingsBtn {
+ width: 150px;
+ height: auto;
+  background-color: rgb(48 56 75);
+  border-radius: 10px;
+  color:#eee;
+  text-align: center;
+  padding: 5px;
+  }
+
+
+.closeModal {
+  background-color: #30384b;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 1.4rem;
+  line-height: 36px;
+  margin-top: 40px;
+}
+
+/* FORM */
 
 button {
   background-color: transparent;
@@ -52,15 +89,13 @@ label {
   margin-top: 20px;
 }
 
-form {
-  padding: 20px;
+.question_box,
+ input[type="text"] {
+  width: 80%;
 }
 
-form label {
-  margin-bottom: 10px;
-}
-
-input[type="text"i] {
+input[type="text"],
+ input[type="submit"] {
   background-color: rgba(255, 255, 255, .1);
   border-radius: 10px;
   padding: 10px 20px;
@@ -68,6 +103,13 @@ input[type="text"i] {
   line-height: 36px;
   display: block;
 }
+
+input[type="submit"] {
+  color: white;
+  margin-top: 10px;
+}
+
+/* SLIDER */
 
 .slider {
   height: 40px;
@@ -91,16 +133,51 @@ input[type="text"i] {
   background-color: var(--green);
 }
 
+/* COSTUMIZE */
+
 .costumizeForm {
-  text-align: left;
+  height: 60vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.costumizeForm input, select {
-  background-color: rgba(255, 255, 255, .1);
-  border-radius: 10px;
-  padding: 10px 20px;
-  font-size: 1.4rem;
-  line-height: 36px;
-  display: block;
-  margin-top: 10px;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+#bgColor,
+#color {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color:transparent;
+  width: 100px;
+  height: 100px;
+  border:none;
+  cursor: pointer;
+}
+
+#bgColor::-webkit-color-swatch,
+#color::-webkit-color-swatch {
+  border-radius:50%;
+  border: 3px solid #eee;
+}
+
+#bgColor::-moz-color-swatch,
+#color::-webkit-color-swatch {
+  border-radius: 50%;
+  border: 3px solid #eee;
+}
+
+#fSize {
+  width: 100px;
+  height: 100px;
+  background-color: transparent;
+  color: #eee;
+  font-size: 26px;
+  text-align: center;
 }
