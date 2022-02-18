@@ -91,7 +91,7 @@ function Timer() {
                     }}/>}
             </div>
             <audio id="beep" ref={audioElement}>
-                <source src="https://onlineclock.net/audio/options/default.mp3" type="audio/mpeg" />
+                <source src="https://onlineclock.net/audio/options/cuckoo-clock.mp3" type="audio/mpeg" />
             </audio>
         </div>
     );
