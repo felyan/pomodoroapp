@@ -19,7 +19,6 @@ const Welcome = () => {
           <Heading />
           <Timer/>
         </>
-
     )
 }
 

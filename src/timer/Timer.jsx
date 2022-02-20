@@ -1,13 +1,12 @@
-import {buildStyles, CircularProgressbar} from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import PlayButton from "./PlayButton";
 import PauseButton from "./PauseButton";
 import {useContext, useEffect, useRef, useState} from "react";
 import PreferencesContext from "../preferences/PreferencesContext.jsx";
+import {TimerClock} from "./TimerClock";
+import {getNext} from "./getNext";
 
-const red = '#f54e4e';
-const green = '#4aec8c';
-// const blue = '#000f';
+let shorts = 0
 
 function Timer() {
     const preferencesInfo = useContext(PreferencesContext);
@@ -15,8 +14,9 @@ function Timer() {
     const audioElement = useRef(null);
 
     const [isPaused, setIsPaused] = useState(true);
-    const [mode, setMode] = useState('work'); // work/sbreak/lbreak/null
+    const [mode, setMode] = useState('work');
     const [secondsLeft, setSecondsLeft] = useState(0);
+    const [totalSeconds, setTotalSeconds] = useState(preferencesInfo.workMinutes * 60);
 
     const secondsLeftRef = useRef(secondsLeft);
     const isPausedRef = useRef(isPaused);
@@ -30,8 +30,16 @@ function Timer() {
     useEffect(() => {
 
         function switchMode() {
-            const nextMode = modeRef.current === 'work' ? 'break' : 'work';
-            const nextSeconds = (nextMode === 'work' ? preferencesInfo.workMinutes : preferencesInfo.shortBreakMinutes) * 60;
+            const { nextMode, nextSeconds } = getNext(modeRef.current, shorts, preferencesInfo);
+            if (nextMode === 'shortBreak' || nextMode === 'longBreak') {
+                if (shorts === 2) {
+                    shorts = 0;
+                } else {
+                    shorts += 1;
+                }
+            }
+
+            setTotalSeconds(nextSeconds);
 
             setMode(nextMode);
             modeRef.current = nextMode;
@@ -51,34 +59,18 @@ function Timer() {
                 audioElement.current.play();
                 return switchMode();
             }
-
             tick();
         }, 1000);
 
         return () => clearInterval(interval);
     }, [preferencesInfo]);
 
-    const totalSeconds = mode === 'work'
-        ? preferencesInfo.workMinutes * 60
-        : preferencesInfo.shortBreakMinutes * 60;
-    const percentage = Math.round(secondsLeft / totalSeconds * 100);
-
-    const minutes = Math.floor(secondsLeft / 60);
-    let seconds = secondsLeft % 60;
-    if (seconds < 10) seconds = '0' + seconds;
-
     return (
         <div className='timer'>
-            <CircularProgressbar
-                value={percentage}
-                text={minutes + ':' + seconds}
-                styles={buildStyles({
-                  textColor: '#fff',
-                    tailColor: 'rgba(255,255,255,.2)',
-                    pathColor: (mode === 'work') ? red : green
-                  
-                //   pathColor: (mode === 'work') ? red : (mode === 'shortBreak') ? green : (mode === 'longBreak') ? blue                  
-                })}/>
+            <TimerClock
+                mode={mode}
+                secondsLeft={secondsLeft}
+                totalSeconds={totalSeconds} />
             <div style={{marginTop: '20px'}}>
                 {isPaused
                     ? <PlayButton onClick={() => {

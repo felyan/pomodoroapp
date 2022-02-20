@@ -11,15 +11,15 @@ The Pomodoro Technique will provide a simple tool/process for improving producti
 - Improve your work or study process
 
 ## Operation
-Set your main task, and set the times in Let's Focus.
+Set your main task, and set the times in "Let's Focus".
 You can set a work time, a short-break time between the work sessions, and a long-break time.
-Start working:
-1. Start the Pomodoro timer
+How to use:
+1. Start the Pomodoro timer 
 2. Work until the Pomodoro rings
-3. Take a short break (10 minutes)
-4. Keep on working, Pomodoro after Pomodoro, until the task at hand is finished. Every 3 Pomodoros take a longer break, (30 minutes).
+3. Take a short break (up to 15 minutes)
+4. Keep on working, Pomodoro after Pomodoro, until the task at hand is finished. Every 3 Pomodoros take a longer break, (eg. 30 minutes).
 
-In Settings you can costumize your pomodoro: you can set the background color and the text color.
+In "Settings" you can costumize your pomodoro: you can set the background color and the text color.
 
 ## Tech/Framework used
 React

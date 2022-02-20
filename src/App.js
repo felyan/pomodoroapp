@@ -11,7 +11,7 @@ function App() {
 
     const [showPreferences, setShowPreferences] = useState(false);
     const [showCostumize, setShowCostumize] = useState(false);
-    const [showFocusQuestion, setFocusQuestion]=useState("focusQuestion")
+    const [focusQuestion, setFocusQuestion] = useState(undefined);
     const [workMinutes, setWorkMinutes] = useState(1);
     const [shortBreakMinutes, setShortBreakMinutes] = useState(1);
     const [longBreakMinutes, setLongBreakMinutes] = useState(2);
@@ -23,13 +23,13 @@ function App() {
         <main style={{
             backgroundColor: bgColor,
             color: color,
-            fSize: fSize
+            fontSize: fSize + 'px',
         }}>
             
             <PreferencesContext.Provider value={{
                 showPreferences,
                 setShowPreferences,
-                showFocusQuestion,
+                focusQuestion,
                 setFocusQuestion,
                 workMinutes,
                 shortBreakMinutes,

@@ -9,7 +9,6 @@ const Costumize = () => {
     const [color, setColor] = useState("#eeeeee");
     const [fSize, setFSize] = useState("16");
 
-
     const handleSubmit = (event) => {
         event.preventDefault()
         costumizeInfo.setBgColor(bgColor)
@@ -17,10 +16,8 @@ const Costumize = () => {
         costumizeInfo.setFSize(fSize)
     }
 
-
     return (
-        <>
-            
+        <>        
             <form onSubmit={handleSubmit}>
                 <div className="costumizeForm">
                     <div className="container">
@@ -42,7 +39,6 @@ const Costumize = () => {
                 <BackButton onClick={() => costumizeInfo.setShowCostumize(false)}/>
             </div>
         </>
-
     )
 }
 

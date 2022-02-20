@@ -8,9 +8,7 @@ const Heading = () => {
     const focusQuestion = { __html: preferencesInfo.focusQuestion }
 
     return (
-        <div dangerouslySetInnerHTML={focusQuestion}>
-  
-        </div>
+        <h1 dangerouslySetInnerHTML={focusQuestion}></h1>
     )
 }
 

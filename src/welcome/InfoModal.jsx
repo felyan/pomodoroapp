@@ -11,7 +11,6 @@ const InfoModal = () => {
         ariaHideApp={false}>
         <div className="modalContent">
           <h2>The One Thing</h2>
-
           <h3>Philosophy behind The One Thing habit</h3>
           <p>
             The most successful people are also the most productive. They are the ones who can make the
@@ -43,8 +42,7 @@ const InfoModal = () => {
         <div>
           <button className="closeModal" onClick={() => setModalIsOpen(false)}>Close</button>
         </div>
-      </Modal>
-      
+      </Modal>      
     </div>
   )}
 
